@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   OneSIS design tokens
+   Brand accent replaces the source design's green (#196B3B) with the
+   client-specified maroon: rgb(161, 35, 43)
+------------------------------------------------------------------- */
+:root {
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  --color-ink: #14110f;         /* primary heading / body text */
+  --color-body: #5c5b57;        /* paragraph copy */
+  --color-muted: #8a8985;       /* small-caps labels, captions */
+  --color-muted-2: #a3a29d;     /* faint numerals, placeholder text */
+
+  --color-cream: #f3f3ee;       /* alternating section background */
+  --color-offwhite: #fafaf8;    /* nav / lightest surface */
+  --color-white: #ffffff;
+
+  --color-border: #dedad2;      /* hairline borders */
+  --color-border-soft: #e7e4dc;
+
+  --color-brand: #a1232b;       /* rgb(161, 35, 43) — client brand color */
+  --color-brand-dark: #7d1b21;  /* hover / pressed state */
+  --color-brand-tint: #f4e7e7;  /* light wash for highlighted cards */
+  --color-brand-tint-2: #efd9da;
+
+  --color-ink-inverse: #f6f4f0; /* text on dark photo overlays */
+  --color-body-inverse: #d8d5cd;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-body: var(--color-body);
+  --color-muted: var(--color-muted);
+  --color-muted-2: var(--color-muted-2);
+
+  --color-cream: var(--color-cream);
+  --color-offwhite: var(--color-offwhite);
+
+  --color-border: var(--color-border);
+  --color-border-soft: var(--color-border-soft);
+
+  --color-brand: var(--color-brand);
+  --color-brand-dark: var(--color-brand-dark);
+  --color-brand-tint: var(--color-brand-tint);
+  --color-brand-tint-2: var(--color-brand-tint-2);
+
+  --color-ink-inverse: var(--color-ink-inverse);
+  --color-body-inverse: var(--color-body-inverse);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Serif italic accent used inside headings throughout the site */
+.accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-brand);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+.hairline {
+  border-color: var(--color-border);
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-white);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,17 @@
+Step 1 Terminal 1 — PostgreSQL 
+  
+pass:  postgres1 
+
+Connect with the db 
+
+Terminal 2 — MinIO 
+
+$env:MINIO_ROOT_USER="onesis_minio"
+$env:MINIO_ROOT_PASSWORD="onesis_minio_secret"
+D:\minio\minio.exe server D:\minio\data --console-address ":9001"
+
+Terminal 3 — Next.js dev server
+
+
+Email: admin@onesis.in
+Password: ChangeMe123!

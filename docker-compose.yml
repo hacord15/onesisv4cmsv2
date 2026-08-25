@@ -1,0 +1,45 @@
+name: onesis-cms
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: onesis_cms
+    ports:
+      - "5432:5432"
+    volumes:
+      - onesis_postgres_data:/var/lib/postgresql/data
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: onesis_minio
+      MINIO_ROOT_PASSWORD: onesis_minio_secret
+    ports:
+      - "9000:9000" # S3 API
+      - "9001:9001" # Web console (login with the credentials above)
+    volumes:
+      - onesis_minio_data:/data
+
+  # One-off container that creates the media bucket on first run so you don't
+  # have to click through the MinIO console. Exits once done.
+  minio-init:
+    image: minio/mc:latest
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      until (mc alias set local http://minio:9000 onesis_minio onesis_minio_secret) do echo waiting for minio...; sleep 1; done;
+      mc mb -p local/onesis-media;
+      mc anonymous set download local/onesis-media;
+      exit 0;
+      "
+
+volumes:
+  onesis_postgres_data:
+  onesis_minio_data:
