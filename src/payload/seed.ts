@@ -538,7 +538,18 @@ async function seed() {
     { title: 'ISO 14001:2015 & OHSAS 18001 Certification', category: 'awards', summary: 'Recognized for environmental management and occupational health & safety standards.' },
   ]
   for (const item of newsSeed) {
-    await payload.create({ collection: 'news-items', data: { ...item, publishedDate: new Date().toISOString() } })
+    await payload.create({
+      collection: 'news-items',
+      data: {
+        ...item,
+        slug: item.title
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, ''),
+        publishedDate: new Date().toISOString(),
+      },
+      draft: false,
+    })
   }
   console.log('✓ News Items (6)')
 

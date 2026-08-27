@@ -106,6 +106,7 @@ export interface Config {
     'company-news-page': CompanyNewsPage;
     'company-training-page': CompanyTrainingPage;
     'career-current-openings-page': CareerCurrentOpeningsPage;
+    'career-employee-benefits': CareerEmployeeBenefit;
   };
   globalsSelect: {
     nav: NavSelect<false> | NavSelect<true>;
@@ -116,6 +117,7 @@ export interface Config {
     'company-news-page': CompanyNewsPageSelect<false> | CompanyNewsPageSelect<true>;
     'company-training-page': CompanyTrainingPageSelect<false> | CompanyTrainingPageSelect<true>;
     'career-current-openings-page': CareerCurrentOpeningsPageSelect<false> | CareerCurrentOpeningsPageSelect<true>;
+    'career-employee-benefits': CareerEmployeeBenefitsSelect<false> | CareerEmployeeBenefitsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1199,6 +1201,38 @@ export interface CareerCurrentOpeningsPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "career-employee-benefits".
+ */
+export interface CareerEmployeeBenefit {
+  id: number;
+  banner: number | Media;
+  eyebrow: string;
+  heading: string;
+  headingAccent?: string | null;
+  body?: string | null;
+  benefits?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  seo?: {
+    /**
+     * Shown in browser tabs & search results. ~50-60 characters.
+     */
+    metaTitle?: string | null;
+    /**
+     * Shown in search results. ~150-160 characters.
+     */
+    metaDescription?: string | null;
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "nav_select".
  */
 export interface NavSelect<T extends boolean = true> {
@@ -1620,6 +1654,34 @@ export interface CareerCurrentOpeningsPageSelect<T extends boolean = true> {
   heading?: T;
   headingAccent?: T;
   body?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "career-employee-benefits_select".
+ */
+export interface CareerEmployeeBenefitsSelect<T extends boolean = true> {
+  banner?: T;
+  eyebrow?: T;
+  heading?: T;
+  headingAccent?: T;
+  body?: T;
+  benefits?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   seo?:
     | T
     | {

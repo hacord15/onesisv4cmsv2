@@ -56,7 +56,7 @@ export default buildConfig({
     CompanyNewsPage,
     CompanyTrainingPage,
     CareerCurrentOpenings,
-    // CareerEmployeeBenefits
+    CareerEmployeeBenefits
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
