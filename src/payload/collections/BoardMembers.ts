@@ -5,7 +5,7 @@ export const BoardMembers: CollectionConfig = {
   slug: 'board-members',
   labels: { singular: 'Board Member', plural: 'Board Members' },
   admin: {
-    hidden: true,
+    // hidden: true,
     useAsTitle: 'name',
     defaultColumns: ['name', 'title', 'order'],
     description: 'Company > Board page.',

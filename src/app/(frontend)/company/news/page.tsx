@@ -8,6 +8,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Tag } from "@/components/ui/Tag";
 import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
 import type { NewsItem } from "@/payload-types";
+import { images } from "@/lib/images";
 
 export const metadata = {
   title: "News & Media | OneSIS",
@@ -31,12 +32,16 @@ export default async function NewsPage() {
     <>
       <Header nav={nav} />
       <main className="bg-white">
-        <PageHero
-          eyebrow={pageIntro.eyebrow}
-          heading={<span className="accent">{pageIntro.heading}</span>}
-          description={pageIntro.body ?? undefined}
-          backgroundImage={mediaUrl(pageIntro.banner)}
-        />
+       <PageHero
+                 eyebrow="Solutions"
+                 heading={
+                   <>
+                     Corporate <span className="accent">Interior Solutions</span>
+                   </>
+                 }
+                 description="Design-led, project-managed fitout solutions from concept to handover for corporate spaces."
+                 backgroundImage={images.interiorSolutionsBanner}
+               />
 
         <section className="py-20">
           <Container className="grid gap-12 lg:grid-cols-12">
