@@ -76,10 +76,9 @@ export default async function NewsDetailPage({ params }: Params) {
   const heroImage = mediaUrl(item.image);
   const authorImage = mediaUrl(item.author?.image);
   const sourceLogo = mediaUrl(item.sourceDetails?.logo);
-  const relatedNews = (item.relatedNews ?? []).filter(
-    (related): related is Exclude<typeof related, string> => typeof related !== "string"
-  );
-
+const relatedNews = (item.relatedNews ?? []).filter(
+  (related): related is Exclude<typeof related, number> => typeof related !== "number"
+);
   const formattedDate = item.publishedDate
     ? new Date(item.publishedDate).toLocaleDateString("en-IN", {
         day: "numeric",
