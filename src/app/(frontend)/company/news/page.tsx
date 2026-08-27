@@ -33,14 +33,14 @@ export default async function NewsPage() {
       <Header nav={nav} />
       <main className="bg-white">
        <PageHero
-                 eyebrow="Solutions"
+                 eyebrow="Company"
                  heading={
                    <>
-                     Corporate <span className="accent">Interior Solutions</span>
+                     News &<span className="accent">Media</span>
                    </>
                  }
-                 description="Design-led, project-managed fitout solutions from concept to handover for corporate spaces."
-                 backgroundImage={images.interiorSolutionsBanner}
+              
+                 backgroundImage={images.newsBanner}
                />
 
         <section className="py-20">
