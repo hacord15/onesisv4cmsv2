@@ -335,12 +335,12 @@ export function ContactFormPageClient({ nav, footer }: { nav: Nav; footer: Foote
                 <div className="mt-7 space-y-3 border-t border-[var(--color-border)] pt-6">
 
                   <a
-                    href="mailto:connect@onesis.in"
+                    href="mailto:Onesis@sisindia.com"
                     className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]"
                   >
                     <Mail className="h-4 w-4 text-[var(--color-brand)]" />
 
-                    connect@onesis.in
+                    Onesis@sisindia.com
                   </a>
 
                   <a

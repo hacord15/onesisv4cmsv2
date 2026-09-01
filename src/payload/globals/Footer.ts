@@ -4,7 +4,7 @@ import { anyone, authenticated } from '../access'
 export const Footer: GlobalConfig = {
   slug: 'footer',
   label: 'Footer',
-  admin: { hidden: true },
+  // admin: { hidden: true },
   access: { read: anyone, update: authenticated },
   fields: [
     { name: 'description', type: 'textarea', required: true },

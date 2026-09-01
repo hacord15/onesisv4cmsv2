@@ -216,8 +216,8 @@ export const officeInterior = {
     "Handover, snagging & FM transition",
   ],
     cta: "Explore Interior Fitout & Management",
-      imageCaption: "Residential & Commercial",
-  imageSubcaption: "Full-Spectrum Property Ops",
+      imageCaption: "Corporate Interior Solutions",
+  imageSubcaption: "Turnkey Interiors, Fitouts & Workplace Solutions",
   stats: [
     { value: "320K+", label: "Permanent Staff" },
     { value: "630+", label: "Districts" },
@@ -337,7 +337,7 @@ export const outcomes = {
       index: "01",
       title: "Transform",
       description:
-        "Group Companies Managed and digitised last-mile operations across all service lines — driving operational excellence at scale.",
+        "Group Companies Managed Service and digitised last-mile operations across all service lines — driving operational excellence at scale.",
     },
     {
       index: "02",

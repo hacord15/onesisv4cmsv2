@@ -74,6 +74,7 @@ export interface Config {
     'news-items': NewsItem;
     'training-programs': TrainingProgram;
     'job-openings': JobOpening;
+    'case-studies': CaseStudy;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     'news-items': NewsItemsSelect<false> | NewsItemsSelect<true>;
     'training-programs': TrainingProgramsSelect<false> | TrainingProgramsSelect<true>;
     'job-openings': JobOpeningsSelect<false> | JobOpeningsSelect<true>;
+    'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -430,6 +432,104 @@ export interface JobOpening {
   createdAt: string;
 }
 /**
+ * Solutions > Case Studies — listing cards and individual project detail pages.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-studies".
+ */
+export interface CaseStudy {
+  id: number;
+  title: string;
+  clientName?: string | null;
+  location?: string | null;
+  category: 'civil-interior' | 'property-management' | 'specialized-civil' | 'ifm-technical' | 'pmc';
+  coverImage: number | Media;
+  shortDescription?: string | null;
+  featured?: boolean | null;
+  sortOrder?: number | null;
+  /**
+   * URL path: /solutions/case-studies/[slug]
+   */
+  slug: string;
+  projectOverview?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  solution?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  services?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  keyFigures?:
+    | {
+        /**
+         * e.g. 22,77,219 Sqft
+         */
+        value: string;
+        /**
+         * e.g. Residential Building
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  projectImages?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  projectType?: string | null;
+  areaSize?: string | null;
+  completionYear?: number | null;
+  additionalDetails?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  metaTitle?: string | null;
+  metaDescription?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -480,6 +580,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'job-openings';
         value: number | JobOpening;
+      } | null)
+    | ({
+        relationTo: 'case-studies';
+        value: number | CaseStudy;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -706,6 +810,50 @@ export interface JobOpeningsSelect<T extends boolean = true> {
   experience?: T;
   description?: T;
   isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "case-studies_select".
+ */
+export interface CaseStudiesSelect<T extends boolean = true> {
+  title?: T;
+  clientName?: T;
+  location?: T;
+  category?: T;
+  coverImage?: T;
+  shortDescription?: T;
+  featured?: T;
+  sortOrder?: T;
+  slug?: T;
+  projectOverview?: T;
+  solution?: T;
+  services?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  keyFigures?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  projectImages?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  projectType?: T;
+  areaSize?: T;
+  completionYear?: T;
+  additionalDetails?: T;
+  metaTitle?: T;
+  metaDescription?: T;
   updatedAt?: T;
   createdAt?: T;
 }

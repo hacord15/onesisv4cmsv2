@@ -17,7 +17,7 @@ export function WhereWeOperate() {
         </div>
         <div className="relative aspect-[4/3] lg:aspect-auto">
           <Image
-            src={images.operateTwo}
+            src={images.corporatemeeting}
             alt="Corporate interior maintained by OneSIS"
             fill
             sizes="(min-width: 1024px) 33vw, 100vw"

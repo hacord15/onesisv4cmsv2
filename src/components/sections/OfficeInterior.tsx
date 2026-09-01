@@ -21,9 +21,9 @@ export function OfficeInterior() {
               {officeInterior.body}
             </p>
 
-               <h3 className="mt-6 font-display text-xl text-[var(--color-ink)]">
-                            {officeInterior.sectorsHeading}
-                          </h3>
+            <h3 className="mt-6 font-display text-xl text-[var(--color-ink)]">
+              {officeInterior.sectorsHeading}
+            </h3>
             <ul className="mt-6 flex flex-col">
               {officeInterior.checklist.map((item) => (
                 <li

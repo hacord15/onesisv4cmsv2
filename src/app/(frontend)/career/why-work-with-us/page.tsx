@@ -19,11 +19,11 @@ const perks = [
   },
   {
     title: "Best Compensation in the Industry",
-    description: "100% statutory compliance with Aadhaar-linked salary disbursement.",
+    description: "Setting the industry benchmark with best-in-class compensation, benefits, and career growth opportunities",
   },
   {
     title: "Career Development",
-    description: "Skilling, upskilling programs, and M-Trainer digital learning platform.",
+    description: "Empowering careers through industry-leading development opportunities, continuous learning, internal mobility, and future-ready leadership growth.",
   },
   {
     title: "Equal Opportunity",
@@ -54,7 +54,7 @@ export default async function CareerPage() {
           heading={
             <>
               Build Your Career with India&apos;s{" "}
-              <span className="accent">Fastest-Growing Service Company</span>
+              <span className="accent">Growing  Management Company</span>
             </>
           }
           description="At OneSIS, we believe our people are our most important asset. As part of the SIS Group — India's largest security and facility management enterprise with 3.5 lakh employees — we offer career opportunities, continuous learning, and a culture built on safety, dignity, and equal opportunity."

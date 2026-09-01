@@ -12,9 +12,10 @@ export const images = {
   verticalHardcoreRepair: "/assests/homepage/hardcore-repair.png",
   verticalOfficeInterior: "/assests/homepage/office-interior.jpg",
   repairSpotlight: "/assests/homepage/repair-spotlight.jpg",
-  propertySpotlight: "/assests/homepage/property-spotlight.jpg",
+  propertySpotlight: "/assests/homepage/property-spotlight.png",
   operateOne: "/assests/homepage/operate-one.jpg",
-  operateTwo: "/assests/homepage/operate-two.jpg",
+  corporatemeeting: "/assests/homepage/corporate-meeting.png",
+  operateTwo: "/assests/homepage/operate-two.png",
   operateThree: "/assests/homepage/operate-three.png",
   techBanner: "/assests/homepage/tech-banner.jpg",
   

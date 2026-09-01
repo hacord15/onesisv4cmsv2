@@ -35,13 +35,13 @@ export function Header({ nav }: { nav: Nav }) {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-8 md:flex">
+          {/* Desktop / Tablet Navigation */}
+          <nav className="hidden items-center gap-4 md:flex lg:gap-8">
             {(nav.links ?? []).map((link) => (
               <div key={link.label} className="group relative">
                 <Link
                   href={link.href}
-                  className="flex items-center gap-1 py-6 text-[14px] font-medium text-[var(--color-body)] transition-colors hover:text-[var(--color-brand)]"
+                  className="flex items-center gap-1 py-6 text-[13px] font-medium text-[var(--color-body)] transition-colors hover:text-[var(--color-brand)] lg:text-[14px]"
                 >
                   {link.label}
 
@@ -79,11 +79,11 @@ export function Header({ nav }: { nav: Nav }) {
             ))}
           </nav>
 
-          {/* Desktop Right Section */}
+          {/* Desktop / Tablet Right Section */}
           <div className="hidden items-center gap-4 md:flex">
             <Link
               href="#DownloadCompanyProfile"
-              className="inline-flex items-center gap-2 rounded bg-[var(--color-brand)] px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-[var(--color-brand-dark)]"
+              className="inline-flex items-center gap-2 rounded bg-[var(--color-brand)] px-4 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-[var(--color-brand-dark)] lg:px-5 lg:text-[13px]"
             >
               <svg
                 className="h-4 w-4"
@@ -101,11 +101,12 @@ export function Header({ nav }: { nav: Nav }) {
               {nav.ctaLabel}
             </Link>
 
+            {/* SIS Group logo: hidden on tablet (md-lg), only shown from lg (desktop) up */}
             <Link
               href="https://sisindia.com/"
               target="_blank"
               rel="noreferrer"
-              className="shrink-0"
+              className="hidden shrink-0 lg:block"
             >
               <Image
                 src={images.logo_SISGroup}
@@ -257,7 +258,7 @@ export function Header({ nav }: { nav: Nav }) {
               {nav.ctaLabel}
             </Link>
 
-            {/* SIS Group Logo - Centered */}
+            {/* SIS Group Logo - Centered (mobile sidebar only, unaffected by tablet rule) */}
             <div className="flex justify-center">
               <Link
                 href="https://sisindia.com/"

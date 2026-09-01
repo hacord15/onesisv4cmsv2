@@ -23,6 +23,7 @@ import { CompanyNewsPage } from './payload/globals/CompanyNewsPage'
 import { CompanyTrainingPage } from './payload/globals/CompanyTrainingPage'
 import { CareerCurrentOpenings } from './payload/globals/CareerCurrentOpenings'
 import { CareerEmployeeBenefits } from './payload/globals/CareerEmployeeBenefits'
+import { CaseStudies } from './payload/collections/CaseStudies'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -46,6 +47,7 @@ export default buildConfig({
     NewsItems,
     TrainingPrograms,
     JobOpenings,
+    CaseStudies,
   ],
   globals: [
     Nav,
@@ -56,7 +58,8 @@ export default buildConfig({
     CompanyNewsPage,
     CompanyTrainingPage,
     CareerCurrentOpenings,
-    CareerEmployeeBenefits
+    CareerEmployeeBenefits,
+    
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

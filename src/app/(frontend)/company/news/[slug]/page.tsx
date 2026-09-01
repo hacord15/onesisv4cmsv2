@@ -340,7 +340,7 @@ const relatedNews = (item.relatedNews ?? []).filter(
                   </div>
                 )}
 
-                {item.keyTakeaways && item.keyTakeaways.length > 0 && (
+                {/* {item.keyTakeaways && item.keyTakeaways.length > 0 && (
                   <div className="rounded-2xl border border-[var(--color-ink)]/10 p-5">
                     <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-brand)]">
                       <StarIcon className="h-4 w-4" />
@@ -357,7 +357,7 @@ const relatedNews = (item.relatedNews ?? []).filter(
                       ))}
                     </ul>
                   </div>
-                )}
+                )} */}
 
                 {item.tags && item.tags.length > 0 && (
                   <div className="rounded-2xl border border-[var(--color-ink)]/10 p-5">
