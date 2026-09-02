@@ -7,6 +7,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { CareerSubNav } from "@/components/ui/CareerSubNav";
 import { OpeningsList } from "@/components/career/OpeningsList";
 import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
+import { images } from "@/lib/images";
 
 export const metadata = {
   title: "Current Openings | Careers at OneSIS",
@@ -27,10 +28,14 @@ export default async function OpeningsPage() {
       <Header nav={nav} />
       <main className="bg-white">
         <PageHero
-          eyebrow={pageIntro.eyebrow}
-          heading={<span className="accent">{pageIntro.heading}</span>}
-          description={pageIntro.body ?? undefined}
-          backgroundImage={mediaUrl(pageIntro.banner)}
+          eyebrow="Career"
+          heading={
+            <>
+              Current <span className="accent">Opening</span>
+            </>
+          }
+          description="Join a team of 3.5 lakh+ professionals across India. Browse open roles below, filter by department, and apply directly."
+          backgroundImage={images.currentopeningsBanner}
         />
 
         <CareerSubNav />

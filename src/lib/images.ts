@@ -149,7 +149,9 @@ cta1: "/assests/homepage/cta-1.png",
 //career page 
 
 whyworkwithusBanner: "/assests/career/why-work-with-us/Why_Work_With_Us_Banner.png",
-currentopeningsBanner: "/assests/career/current-openings/Current_Openings_Banner.png",
+currentopeningsBanner: "/assests/solutions/casestudies/case-studies-banner.png",
 employeeBenefitsBanner: "/assests/career/employee-benefits/Employee_Benefits_Banner.png",
+
+caseStudies:'/assests/solutions/casestudies/case-studies-banner.png',
 
 };

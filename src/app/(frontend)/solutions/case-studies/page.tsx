@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Tag } from "@/components/ui/Tag";
 import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
+import { images } from "@/lib/images";
 
 const CATEGORY_LABEL: Record<string, string> = {
   "civil-interior": "Civil & Interior",
@@ -67,6 +68,7 @@ export default async function CaseStudiesPage({
           eyebrow="Solutions"
           heading={<span className="accent">Case Studies</span>}
           description="Real engagements across property management, civil, interiors, and technical facility management — delivered end to end by OneSIS."
+          backgroundImage={images.caseStudies}
         />
 
         <section className="py-20">
