@@ -7,7 +7,7 @@ export const JobOpenings: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'department', 'location', 'isActive'],
-    hidden: true,
+    // hidden: true,
     description: 'Career > Current Openings page.',
   },
   access: {

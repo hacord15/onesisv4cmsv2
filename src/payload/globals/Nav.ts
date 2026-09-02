@@ -4,7 +4,7 @@ import { anyone, authenticated } from '../access'
 export const Nav: GlobalConfig = {
   slug: 'nav',
   label: 'Navigation',
-  admin: { hidden: true },
+  // admin: { hidden: true },
   access: { read: anyone, update: authenticated },
   fields: [
     { name: 'logoText', type: 'text', required: true, defaultValue: 'OneSIS' },
