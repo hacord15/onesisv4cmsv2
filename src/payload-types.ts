@@ -272,9 +272,9 @@ export interface NewsItem {
   id: number;
   title: string;
   /**
-   * URL-friendly identifier, e.g. "onesis-featured-in-fm-rankings". Used at /company/news/[slug].
+   * Auto-filled from the title — leave blank and it fills itself in when you save. Used at /company/news/[slug].
    */
-  slug: string;
+  slug?: string | null;
   category: 'media-coverage' | 'industry-insights' | 'awards';
   /**
    * Show this item in the "Featured News" section at the top of the News page.
@@ -448,9 +448,9 @@ export interface CaseStudy {
   featured?: boolean | null;
   sortOrder?: number | null;
   /**
-   * URL path: /solutions/case-studies/[slug]
+   * Auto-filled from the title. You can also edit it manually. URL path: /solutions/case-studies/[slug]
    */
-  slug: string;
+  slug?: string | null;
   projectOverview?: {
     root: {
       type: string;

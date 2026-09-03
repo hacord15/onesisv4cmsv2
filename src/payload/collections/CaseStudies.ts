@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { anyone, authenticated } from '../access'
+import { formatSlugHook } from '../hooks/formatSlug'
 
 export const CaseStudies: CollectionConfig = {
   slug: 'case-studies',
@@ -118,18 +119,21 @@ export const CaseStudies: CollectionConfig = {
             },
 
             {
-              name: 'slug',
-              type: 'text',
-              required: true,
-              unique: true,
-              index: true,
-              label: 'Slug',
+  name: 'slug',
+  type: 'text',
+  unique: true,
+  index: true,
+  label: 'Slug',
 
-              admin: {
-                description:
-                  'URL path: /solutions/case-studies/[slug]',
-              },
-            },
+  admin: {
+    description:
+      'Auto-filled from the title. You can also edit it manually. URL path: /solutions/case-studies/[slug]',
+  },
+
+  hooks: {
+    beforeValidate: [formatSlugHook('title')],
+  },
+},
           ],
         },
 

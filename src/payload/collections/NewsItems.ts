@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { anyone, authenticated } from '../access'
+import { formatSlugHook } from '../hooks/formatSlug'
 
 export const NewsItems: CollectionConfig = {
   slug: 'news-items',
@@ -19,14 +20,16 @@ export const NewsItems: CollectionConfig = {
   defaultSort: '-publishedDate',
   fields: [
     { name: 'title', type: 'text', required: true },
-    {
+      {
       name: 'slug',
       type: 'text',
-      required: true,
       unique: true,
-      admin: {
-        description:
-          'URL-friendly identifier, e.g. "onesis-featured-in-fm-rankings". Used at /company/news/[slug].',
+      admin: { 
+        description: 'Auto-filled from the title — leave blank and it fills itself in when you save. Used at /company/news/[slug].',
+        position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [formatSlugHook('title')],
       },
     },
     {
