@@ -6,6 +6,9 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ProfileCard } from "@/components/ui/ProfileCard";
 import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
 
+export const dynamic = "force-dynamic";
+
+
 export const metadata = {
   title: "Management Team | OneSIS",
 };
