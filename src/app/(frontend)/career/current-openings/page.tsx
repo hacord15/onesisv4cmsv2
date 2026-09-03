@@ -9,6 +9,9 @@ import { OpeningsList } from "@/components/career/OpeningsList";
 import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
 import { images } from "@/lib/images";
 
+export const dynamic = "force-dynamic";
+
+
 export const metadata = {
   title: "Current Openings | Careers at OneSIS",
   description:
