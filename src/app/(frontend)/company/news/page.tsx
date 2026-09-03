@@ -10,6 +10,9 @@ import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
 import type { NewsItem } from "@/payload-types";
 import { images } from "@/lib/images";
 
+export const dynamic = "force-dynamic";
+
+
 export const metadata = {
   title: "News & Media | OneSIS",
   description:
@@ -32,16 +35,16 @@ export default async function NewsPage() {
     <>
       <Header nav={nav} />
       <main className="bg-white">
-       <PageHero
-                 eyebrow="Company"
-                 heading={
-                   <>
-                     News &<span className="accent">Media</span>
-                   </>
-                 }
-              
-                 backgroundImage={images.newsBanner}
-               />
+        <PageHero
+          eyebrow="Company"
+          heading={
+            <>
+              News &<span className="accent">Media</span>
+            </>
+          }
+
+          backgroundImage={images.newsBanner}
+        />
 
         <section className="py-20">
           <Container className="grid gap-12 lg:grid-cols-12">

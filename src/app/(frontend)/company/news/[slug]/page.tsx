@@ -20,6 +20,9 @@ import {
 } from "@/components/ui/icons";
 import { getGlobal, getCollectionItem, mediaUrl, toEmbedUrl } from "@/lib/payload-fetch";
 
+export const dynamic = "force-dynamic";
+
+
 const CATEGORY_LABEL: Record<string, string> = {
   "media-coverage": "Media Coverage",
   "industry-insights": "Industry Insights",
