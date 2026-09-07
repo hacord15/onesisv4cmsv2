@@ -5,6 +5,9 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
+
 const AUTO_SLIDE_INTERVAL = 6000;
 const CARDS_PER_SLIDE = 2;
 
