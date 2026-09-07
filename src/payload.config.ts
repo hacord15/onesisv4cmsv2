@@ -24,7 +24,7 @@ import { CompanyTrainingPage } from './payload/globals/CompanyTrainingPage'
 import { CareerCurrentOpenings } from './payload/globals/CareerCurrentOpenings'
 import { CareerEmployeeBenefits } from './payload/globals/CareerEmployeeBenefits'
 import { CaseStudies } from './payload/collections/CaseStudies'
-
+import { Testimonials } from './payload/collections/Testimonials'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -48,6 +48,7 @@ export default buildConfig({
     TrainingPrograms,
     JobOpenings,
     CaseStudies,
+    Testimonials,
   ],
   globals: [
     Nav,

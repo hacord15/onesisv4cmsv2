@@ -75,6 +75,7 @@ export interface Config {
     'training-programs': TrainingProgram;
     'job-openings': JobOpening;
     'case-studies': CaseStudy;
+    testimonials: Testimonial;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     'training-programs': TrainingProgramsSelect<false> | TrainingProgramsSelect<true>;
     'job-openings': JobOpeningsSelect<false> | JobOpeningsSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -530,6 +532,32 @@ export interface CaseStudy {
   createdAt: string;
 }
 /**
+ * Client quotes shown in the homepage Testimonials carousel.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  quote: string;
+  name: string;
+  /**
+   * e.g. Head of Admin
+   */
+  title?: string | null;
+  /**
+   * e.g. Tech Park, Bengaluru
+   */
+  company?: string | null;
+  /**
+   * 1 to 5 stars
+   */
+  rating: number;
+  sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -584,6 +612,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'case-studies';
         value: number | CaseStudy;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -854,6 +886,20 @@ export interface CaseStudiesSelect<T extends boolean = true> {
   additionalDetails?: T;
   metaTitle?: T;
   metaDescription?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  quote?: T;
+  name?: T;
+  title?: T;
+  company?: T;
+  rating?: T;
+  sortOrder?: T;
   updatedAt?: T;
   createdAt?: T;
 }

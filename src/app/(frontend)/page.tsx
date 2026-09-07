@@ -16,15 +16,16 @@ import { CorporateInteriorSolutions } from "@/components/sections/CorporateInter
 import { OutcomesAndOperations } from "@/components/sections/OutcomesAndOperations";
 import { ComplianceRiskManagement } from "@/components/sections/ComplianceRiskManagement";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { getGlobal } from "@/lib/payload-fetch";
+import { getCollection, getGlobal } from "@/lib/payload-fetch";
 
 export default async function Home() {
   // CMS-driven sections. Everything below comes from the Payload admin panel
   // (Nav / Footer / Home globals) instead of src/lib/content.ts.
-  const [nav, footer, home] = await Promise.all([
+  const [nav, footer, home,testimonialItems] = await Promise.all([
     getGlobal("nav"),
     getGlobal("footer"),
     getGlobal("home"),
+    getCollection("testimonials", { sort: "sortOrder" }),
   ]);
 
   return (
@@ -47,7 +48,7 @@ export default async function Home() {
         <Accountability />
         <WhereWeOperate />
         <TechPlatforms />
-        {/* <Testimonials /> */}
+        <Testimonials items={testimonialItems} />
         <CTA />
       </main>
       <Footer footer={footer} />
