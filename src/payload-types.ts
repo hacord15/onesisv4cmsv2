@@ -76,6 +76,7 @@ export interface Config {
     'job-openings': JobOpening;
     'case-studies': CaseStudy;
     testimonials: Testimonial;
+    blogs: Blog;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     'job-openings': JobOpeningsSelect<false> | JobOpeningsSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    blogs: BlogsSelect<false> | BlogsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -558,6 +560,64 @@ export interface Testimonial {
   createdAt: string;
 }
 /**
+ * Blog listing cards and individual post detail pages.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs".
+ */
+export interface Blog {
+  id: number;
+  title: string;
+  /**
+   * Auto-generated from Title if left blank. URL path: /blog/[slug]
+   */
+  slug?: string | null;
+  /**
+   * Short summary shown on the blog listing card.
+   */
+  excerpt: string;
+  featuredImage: number | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  category: 'facility-management' | 'industry-insights' | 'company-news' | 'case-studies' | 'compliance';
+  author: string;
+  publishedAt: string;
+  /**
+   * e.g. 5 (for "5 min read")
+   */
+  readingTime?: number | null;
+  featured?: boolean | null;
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  status: 'draft' | 'published';
+  /**
+   * Shown at the bottom of the detail page.
+   */
+  relatedBlogs?: (number | Blog)[] | null;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  seoImage?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -616,6 +676,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'blogs';
+        value: number | Blog;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -900,6 +964,35 @@ export interface TestimonialsSelect<T extends boolean = true> {
   company?: T;
   rating?: T;
   sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs_select".
+ */
+export interface BlogsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  featuredImage?: T;
+  content?: T;
+  category?: T;
+  author?: T;
+  publishedAt?: T;
+  readingTime?: T;
+  featured?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  status?: T;
+  relatedBlogs?: T;
+  seoTitle?: T;
+  seoDescription?: T;
+  seoImage?: T;
   updatedAt?: T;
   createdAt?: T;
 }

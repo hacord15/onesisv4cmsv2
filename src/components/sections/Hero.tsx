@@ -100,19 +100,38 @@ import type { Home } from "@/payload-types";
 export function Hero({ hero }: { hero: Home["hero"] }) {
   return (
     <section id="top" className="relative overflow-hidden bg-[var(--color-ink)]">
-      <div className="absolute inset-0">
-        <Image
-          src={mediaUrl(hero.banner)}
+      {/* <div className="absolute inset-0">
+        <Image 
+        src={mediaUrl(hero.banner)}
           alt="Modern office interior managed by OneSIS"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        {/* Left dark -> right light */}
-<div className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink)]/55 via-[var(--color-ink)]/25 to-transparent" />        {/* Bottom fade for scroll indicator area */}
+       
+<div className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink)]/55 via-[var(--color-ink)]/25 to-transparent" />       
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/60 via-transparent to-transparent" />
-      </div>
+      </div> */}
+
+      <div className="absolute inset-0">
+  <video
+    src="/assests/homepage/onesis.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+    className="absolute inset-0 h-full w-full object-cover"
+    aria-label="Modern office interior managed by OneSIS"
+  />
+
+  {/* Left dark -> right light */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink)]/55 via-[var(--color-ink)]/25 to-transparent" />
+
+  {/* Bottom fade for scroll indicator area */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/60 via-transparent to-transparent" />
+</div>
 
       <Container className="relative flex flex-col gap-16 py-24 lg:flex-row lg:items-start lg:justify-between lg:py-32">
         {/* Left: headline */}
