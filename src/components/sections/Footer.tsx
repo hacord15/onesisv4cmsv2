@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { images } from "@/lib/images";
 import type { Footer as FooterGlobal } from "@/payload-types";
+export const dynamic = "force-dynamic";
+
 
 
 export function Footer({ footer }: { footer: FooterGlobal }) {

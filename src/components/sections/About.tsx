@@ -4,6 +4,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Tag } from "@/components/ui/Tag";
 import { mediaUrl } from "@/lib/payload-fetch";
 import type { Home } from "@/payload-types";
+import { images } from "@/lib/images";
 
 export function About({ about }: { about: Home["about"] }) {
   return (
@@ -73,7 +74,7 @@ export function About({ about }: { about: Home["about"] }) {
 
             <div className="relative mt-10 aspect-[16/7] w-full overflow-hidden">
               <Image
-                src={mediaUrl(about.image)}
+                src={images.herobanner}
                 alt="Commercial towers managed by OneSIS"
                 fill
                 sizes="(min-width: 1024px) 1100px, 100vw"
