@@ -11,7 +11,7 @@ type TestimonialsProps = {
 };
 
 export async function Testimonials(props: TestimonialsProps) {
-  const items = await getCollection("testimonials", { sort: "sortOrder" });
+  const items = await getCollection("testimonials", { sort: "sortOrder" });       
 
   return <TestimonialsCarousel items={items} {...props} />;
 }
