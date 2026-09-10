@@ -9,6 +9,9 @@ import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
 import { Clock, User } from "lucide-react";
 import { images } from "@/lib/images";
 
+export const dynamic = "force-dynamic";
+
+
 const CATEGORY_LABEL: Record<string, string> = {
   "facility-management": "Facility Management",
   "industry-insights": "Industry Insights",

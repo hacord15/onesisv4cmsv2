@@ -9,6 +9,8 @@ import { Tag } from "@/components/ui/Tag";
 import { ShareButtons } from "@/components/ui/ShareButtons";
 import { getGlobal, getCollectionItem, mediaUrl } from "@/lib/payload-fetch";
 import { User, Clock, ArrowLeft, ArrowRight } from "lucide-react";
+export const dynamic = "force-dynamic";
+
 
 const CATEGORY_LABEL: Record<string, string> = {
   "facility-management": "Facility Management",
