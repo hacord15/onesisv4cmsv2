@@ -48,7 +48,7 @@ export default async function Home() {
         <Accountability />
         <WhereWeOperate />
         <TechPlatforms />
-        <Testimonials items={testimonialItems} />
+        <Testimonials />
         <CTA />
       </main>
       <Footer footer={footer} />
