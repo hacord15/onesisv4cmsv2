@@ -344,12 +344,20 @@ export function ContactFormPageClient({ nav, footer }: { nav: Nav; footer: Foote
                   </a>
 
                   <a
-                    href="tel:+911234567890"
+                    href="tel:+91 01146464444"
                     className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]"
                   >
                     <Phone className="h-4 w-4 text-[var(--color-brand)]" />
 
-                    +91 12345 67890
+                    +91 01146464444
+                  </a>
+                  <a
+                    href="tel:+91 01146465555"
+                    className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]"
+                  >
+                    <Phone className="h-4 w-4 text-[var(--color-brand)]" />
+
+                    +91 01146465555
                   </a>
 
                 </div>
