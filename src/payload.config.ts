@@ -5,6 +5,7 @@ import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 
 import { Users } from './payload/collections/Users'
 import { Media } from './payload/collections/Media'
@@ -13,6 +14,11 @@ import { ManagementTeam } from './payload/collections/ManagementTeam'
 import { NewsItems } from './payload/collections/NewsItems'
 import { TrainingPrograms } from './payload/collections/TrainingPrograms'
 import { JobOpenings } from './payload/collections/JobOpenings'
+import { CaseStudies } from './payload/collections/CaseStudies'
+import { Testimonials } from './payload/collections/Testimonials'
+import { Blogs } from './payload/collections/Blogs'
+import { ContactEnquiries } from './payload/collections/ContactEnquiries'
+import { PartnershipEnquiries } from './payload/collections/PartnershipEnquiries'
 
 import { Nav } from './payload/globals/Nav'
 import { Footer } from './payload/globals/Footer'
@@ -23,9 +29,6 @@ import { CompanyNewsPage } from './payload/globals/CompanyNewsPage'
 import { CompanyTrainingPage } from './payload/globals/CompanyTrainingPage'
 import { CareerCurrentOpenings } from './payload/globals/CareerCurrentOpenings'
 import { CareerEmployeeBenefits } from './payload/globals/CareerEmployeeBenefits'
-import { CaseStudies } from './payload/collections/CaseStudies'
-import { Testimonials } from './payload/collections/Testimonials'
-import { Blogs } from './payload/collections/Blogs'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -51,6 +54,8 @@ export default buildConfig({
     CaseStudies,
     Testimonials,
     Blogs,
+    ContactEnquiries,
+    PartnershipEnquiries,
   ],
   globals: [
     Nav,
@@ -62,7 +67,6 @@ export default buildConfig({
     CompanyTrainingPage,
     CareerCurrentOpenings,
     CareerEmployeeBenefits,
-    
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -75,6 +79,19 @@ export default buildConfig({
     },
   }),
   sharp,
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.SMTP_FROM_EMAIL || 'no-reply@onesis.in',
+    defaultFromName: process.env.SMTP_FROM_NAME || 'OneSIS Website',
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    } as any,
+  }),
   plugins: [
     s3Storage({
       collections: {

@@ -77,6 +77,8 @@ export interface Config {
     'case-studies': CaseStudy;
     testimonials: Testimonial;
     blogs: Blog;
+    'contact-enquiries': ContactEnquiry;
+    'partnership-enquiries': PartnershipEnquiry;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +96,8 @@ export interface Config {
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     blogs: BlogsSelect<false> | BlogsSelect<true>;
+    'contact-enquiries': ContactEnquiriesSelect<false> | ContactEnquiriesSelect<true>;
+    'partnership-enquiries': PartnershipEnquiriesSelect<false> | PartnershipEnquiriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -618,6 +622,50 @@ export interface Blog {
   createdAt: string;
 }
 /**
+ * Submissions from the General Enquiry form at /contact/contact-form.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-enquiries".
+ */
+export interface ContactEnquiry {
+  id: number;
+  fullName: string;
+  organisation: string;
+  designation?: string | null;
+  email: string;
+  phone: string;
+  city: string;
+  service?: string | null;
+  industry?: string | null;
+  message: string;
+  source?: string | null;
+  status?: ('new' | 'contacted' | 'closed') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Submissions from the Partnership form at /contact/partnership-form.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnership-enquiries".
+ */
+export interface PartnershipEnquiry {
+  id: number;
+  companyName: string;
+  contactPerson: string;
+  designation?: string | null;
+  email: string;
+  phone: string;
+  city: string;
+  partnershipType?: string | null;
+  experience?: number | null;
+  specialization: string;
+  message: string;
+  status?: ('new' | 'under-review' | 'approved' | 'rejected') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -680,6 +728,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blogs';
         value: number | Blog;
+      } | null)
+    | ({
+        relationTo: 'contact-enquiries';
+        value: number | ContactEnquiry;
+      } | null)
+    | ({
+        relationTo: 'partnership-enquiries';
+        value: number | PartnershipEnquiry;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -993,6 +1049,44 @@ export interface BlogsSelect<T extends boolean = true> {
   seoTitle?: T;
   seoDescription?: T;
   seoImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-enquiries_select".
+ */
+export interface ContactEnquiriesSelect<T extends boolean = true> {
+  fullName?: T;
+  organisation?: T;
+  designation?: T;
+  email?: T;
+  phone?: T;
+  city?: T;
+  service?: T;
+  industry?: T;
+  message?: T;
+  source?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnership-enquiries_select".
+ */
+export interface PartnershipEnquiriesSelect<T extends boolean = true> {
+  companyName?: T;
+  contactPerson?: T;
+  designation?: T;
+  email?: T;
+  phone?: T;
+  city?: T;
+  partnershipType?: T;
+  experience?: T;
+  specialization?: T;
+  message?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

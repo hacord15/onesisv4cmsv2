@@ -202,16 +202,47 @@ import type { Nav, Footer as FooterGlobal } from "@/payload-types";
 export function PartnershipPageClient({ nav, footer }: { nav: Nav; footer: FooterGlobal }) {
   const [partnerSent, setPartnerSent] = useState(false);
   const [partnerPending, setPartnerPending] = useState(false);
+  const [partnerError, setPartnerError] = useState<string | null>(null);
 
-  function handlePartner(e: FormEvent<HTMLFormElement>) {
+  async function handlePartner(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
+    setPartnerError(null);
     setPartnerPending(true);
 
-    setTimeout(() => {
-      setPartnerPending(false);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/partnership-enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companyName: formData.get("companyName"),
+          contactPerson: formData.get("contactPerson"),
+          designation: formData.get("partnerDesignation") || undefined,
+          email: formData.get("partnerEmail"),
+          phone: formData.get("partnerPhone"),
+          city: formData.get("partnerCity"),
+          partnershipType: formData.get("partnershipType") || undefined,
+          experience: formData.get("experience")
+            ? Number(formData.get("experience"))
+            : undefined,
+          specialization: formData.get("specialization"),
+          message: formData.get("partnerMessage"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
       setPartnerSent(true);
-    }, 900);
+      form.reset();
+    } catch {
+      setPartnerError(
+        "Something went wrong submitting your enquiry. Please try again or email us directly."
+      );
+    } finally {
+      setPartnerPending(false);
+    }
   }
 
   return (
@@ -308,6 +339,12 @@ export function PartnershipPageClient({ nav, footer }: { nav: Nav; footer: Foote
               <h3 className="font-display text-[22px] text-[var(--color-ink)]">
                 Partnership enquiry
               </h3>
+
+              {partnerError && (
+                <div className="mt-6 border border-red-200 bg-red-50 p-4 text-[13.5px] text-red-700">
+                  {partnerError}
+                </div>
+              )}
 
               {partnerSent ? (
                 <div className="mt-7 flex items-start gap-3 border border-[var(--color-brand)]/25 bg-[var(--color-brand-tint)] p-6">

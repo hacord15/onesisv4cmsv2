@@ -173,16 +173,45 @@ import type { Nav, Footer as FooterGlobal } from "@/payload-types";
 export function ContactFormPageClient({ nav, footer }: { nav: Nav; footer: FooterGlobal }) {
   const [enquirySent, setEnquirySent] = useState(false);
   const [enquiryPending, setEnquiryPending] = useState(false);
+  const [enquiryError, setEnquiryError] = useState<string | null>(null);
 
-  function handleEnquiry(e: FormEvent<HTMLFormElement>) {
+  async function handleEnquiry(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
+    setEnquiryError(null);
     setEnquiryPending(true);
 
-    setTimeout(() => {
-      setEnquiryPending(false);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact-enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.get("fullName"),
+          organisation: formData.get("organisation"),
+          designation: formData.get("designation") || undefined,
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          city: formData.get("city"),
+          service: formData.get("service") || undefined,
+          industry: formData.get("industry") || undefined,
+          message: formData.get("message"),
+          source: formData.get("source") || undefined,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
       setEnquirySent(true);
-    }, 900);
+      form.reset();
+    } catch {
+      setEnquiryError(
+        "Something went wrong submitting your enquiry. Please try again or email us directly."
+      );
+    } finally {
+      setEnquiryPending(false);
+    }
   }
 
   return (
@@ -216,6 +245,12 @@ export function ContactFormPageClient({ nav, footer }: { nav: Nav; footer: Foote
                 Tell us what your{" "}
                 <span className="accent">facility</span> needs.
               </h2>
+
+              {enquiryError && (
+                <div className="mt-6 border border-red-200 bg-red-50 p-4 text-[13.5px] text-red-700">
+                  {enquiryError}
+                </div>
+              )}
 
               {enquirySent ? (
                 <div className="mt-8 flex items-start gap-3 border border-[var(--color-brand)]/25 bg-[var(--color-brand-tint)] p-6">
@@ -343,7 +378,7 @@ export function ContactFormPageClient({ nav, footer }: { nav: Nav; footer: Foote
                     Onesis@sisindia.com
                   </a>
 
-                  <a
+                  <a 
                     href="tel:+91 01146464444"
                     className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]"
                   >
@@ -351,7 +386,7 @@ export function ContactFormPageClient({ nav, footer }: { nav: Nav; footer: Foote
 
                     +91 01146464444
                   </a>
-                  <a
+                 <a 
                     href="tel:+91 01146465555"
                     className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]"
                   >
