@@ -7,7 +7,7 @@ import { images } from "@/lib/images";
 
 export function OfficeInterior() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-5 lg:py-5">
       <Container>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="max-w-lg">
