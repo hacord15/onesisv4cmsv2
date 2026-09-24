@@ -29,6 +29,8 @@ import { CompanyNewsPage } from './payload/globals/CompanyNewsPage'
 import { CompanyTrainingPage } from './payload/globals/CompanyTrainingPage'
 import { CareerCurrentOpenings } from './payload/globals/CareerCurrentOpenings'
 import { CareerEmployeeBenefits } from './payload/globals/CareerEmployeeBenefits'
+import { CompanyProfile } from './payload/globals/CompanyProfile'
+
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -58,6 +60,7 @@ export default buildConfig({
     PartnershipEnquiries,
   ],
   globals: [
+    CompanyProfile,
     Nav,
     Footer,
     Home,

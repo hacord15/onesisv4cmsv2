@@ -5,11 +5,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { images } from "@/lib/images";
 import type { Nav } from "@/payload-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { downloadFile } from "@/lib/download-file";
 
 export function Header({ nav }: { nav: Nav }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [companyProfile, setCompanyProfile] = useState<{ url: string; filename: string } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/globals/company-profile?depth=1")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data?.file?.url) return;
+        setCompanyProfile({
+          url: data.file.url,
+          filename: data.file.filename || "OneSIS-Company-Profile",
+        });
+      })
+      .catch(() => {
+        // Silently ignore — button just does nothing if this fails.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const toggleExpand = (label: string) => {
     setExpandedItems((prev) =>
@@ -18,6 +39,18 @@ export function Header({ nav }: { nav: Nav }) {
         : [...prev, label]
     );
   };
+
+  async function handleDownload(e: React.MouseEvent) {
+    e.preventDefault();
+    if (!companyProfile) return;
+    try {
+      await downloadFile(companyProfile.url, companyProfile.filename);
+    } catch {
+      // Fallback: open the file directly if the blob fetch fails
+      // (e.g. CORS not configured on the bucket for this origin).
+      window.open(companyProfile.url, "_blank", "noopener,noreferrer");
+    }
+  }
 
   return (
     <>
@@ -81,9 +114,11 @@ export function Header({ nav }: { nav: Nav }) {
 
           {/* Desktop / Tablet Right Section */}
           <div className="hidden items-center gap-4 md:flex">
-            <Link
-              href="#DownloadCompanyProfile"
-              className="inline-flex items-center gap-2 rounded bg-[var(--color-brand)] px-4 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-[var(--color-brand-dark)] lg:px-5 lg:text-[13px]"
+            <button
+              type="button"
+              onClick={handleDownload}
+              disabled={!companyProfile}
+              className="inline-flex items-center gap-2 rounded bg-[var(--color-brand)] px-4 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-[var(--color-brand-dark)] disabled:cursor-not-allowed disabled:opacity-60 lg:px-5 lg:text-[13px]"
             >
               <svg
                 className="h-4 w-4"
@@ -99,7 +134,7 @@ export function Header({ nav }: { nav: Nav }) {
                 />
               </svg>
               {nav.ctaLabel}
-            </Link>
+            </button>
 
             {/* SIS Group logo: hidden on tablet (md-lg), only shown from lg (desktop) up */}
             <Link
@@ -237,10 +272,14 @@ export function Header({ nav }: { nav: Nav }) {
           {/* Sidebar Footer */}
           <div className="border-t border-gray-200 px-6 py-6">
             {/* Download Profile Button */}
-            <Link
-              href="#DownloadCompanyProfile"
-              onClick={() => setIsSidebarOpen(false)}
-              className="mb-4 flex w-full items-center justify-center gap-2 rounded bg-[var(--color-brand)] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-brand-dark)]"
+            <button
+              type="button"
+              onClick={(e) => {
+                handleDownload(e);
+                setIsSidebarOpen(false);
+              }}
+              disabled={!companyProfile}
+              className="mb-4 flex w-full items-center justify-center gap-2 rounded bg-[var(--color-brand)] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-brand-dark)] disabled:cursor-not-allowed disabled:opacity-60"
             >
               <svg
                 className="h-4 w-4"
@@ -256,7 +295,7 @@ export function Header({ nav }: { nav: Nav }) {
                 />
               </svg>
               {nav.ctaLabel}
-            </Link>
+            </button>
 
             {/* SIS Group Logo - Centered (mobile sidebar only, unaffected by tablet rule) */}
             <div className="flex justify-center">

@@ -108,6 +108,7 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    'company-profile': CompanyProfile;
     nav: Nav;
     footer: Footer;
     home: Home;
@@ -119,6 +120,7 @@ export interface Config {
     'career-employee-benefits': CareerEmployeeBenefit;
   };
   globalsSelect: {
+    'company-profile': CompanyProfileSelect<false> | CompanyProfileSelect<true>;
     nav: NavSelect<false> | NavSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     home: HomeSelect<false> | HomeSelect<true>;
@@ -1131,6 +1133,22 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
+ * The file used by every "Download Profile" button across the site (Header, CTA section). Replace the file here and it updates everywhere automatically. Any file type is accepted — PDF, DOCX, ZIP, etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-profile".
+ */
+export interface CompanyProfile {
+  id: number;
+  /**
+   * Upload the latest company profile file — any format is accepted.
+   */
+  file: number | Media;
+  buttonLabel?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "nav".
  */
@@ -1611,6 +1629,17 @@ export interface CareerEmployeeBenefit {
   };
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-profile_select".
+ */
+export interface CompanyProfileSelect<T extends boolean = true> {
+  file?: T;
+  buttonLabel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -508,7 +508,6 @@ export const footer = {
     links: [
       { label: "Contact Us", href: "/contact" },
       { label: "Careers", href: "/career/current-openings" },
-      { label: "Download Profile", href: "/download-profile" },
       { label: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
