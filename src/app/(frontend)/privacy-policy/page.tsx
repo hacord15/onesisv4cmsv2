@@ -3,6 +3,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { getGlobal } from "@/lib/payload-fetch";
+import { images } from "@/lib/images";
 
 export const metadata = {
   title: "Privacy Policy | OneSIS",
@@ -115,6 +116,7 @@ export default async function PrivacyPolicyPage() {
           eyebrow="Legal"
           heading={<span className="accent">Privacy Policy</span>}
           description={`Last updated: ${LAST_UPDATED}`}
+           backgroundImage={images.currentopeningsBanner}
         />
 
         <section className="py-16">

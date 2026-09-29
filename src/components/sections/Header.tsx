@@ -8,6 +8,9 @@ import type { Nav } from "@/payload-types";
 import { useState, useEffect } from "react";
 import { downloadFile } from "@/lib/download-file";
 
+export const dynamic = "force-dynamic";
+
+
 export function Header({ nav }: { nav: Nav }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
