@@ -37,6 +37,6 @@ export const Media: CollectionConfig = {
       { name: 'banner', width: 1920, height: 800, position: 'centre' },
     ],
     adminThumbnail: 'thumbnail',
-    mimeTypes: ['image/*'],
+     mimeTypes: ['image/*', 'application/pdf'],
   },
 }
