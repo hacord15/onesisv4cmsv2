@@ -5,13 +5,13 @@ import { Footer } from "@/components/sections/Footer";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { images } from "@/lib/images";
+import {  images } from "@/lib/images";
 import { getGlobal } from "@/lib/payload-fetch";
 
 const specializedServices = [
   {
     title: "CapEx & Civil Upgradation",
-    image:images.infrastructureCareBanner,
+    image: images.capexAndCivilUpgradation,
     imageAlt: "Construction workers on a building site",
     items: [
       "Structural Strengthening",
@@ -24,7 +24,7 @@ const specializedServices = [
   },
   {
     title: "Retrofitting Services",
-    image:images.infrastructureCareBanner,
+    image: images.retrofittingServices,
     imageAlt: "HVAC technician inspecting mechanical equipment",
     items: [
       "MEP System Replacement",
@@ -36,7 +36,7 @@ const specializedServices = [
   },
   {
     title: "Smart Maintenance",
-    image:images.infrastructureCareBanner,
+    image: images.smartMaintenance,
     imageAlt: "Robotic arm performing maintenance",
     items: [
       "Robotic HVAC Duct Cleaning",
@@ -48,7 +48,7 @@ const specializedServices = [
   },
   {
     title: "Project Management Consultancy (PMC)",
-    image:images.infrastructureCareBanner,
+    image: images.projectManagementConsultancy,
     imageAlt: "Project manager reviewing blueprints with team",
     items: [
       "Project Planning",
@@ -61,7 +61,7 @@ const specializedServices = [
   },
   {
     title: "Design & Build",
-    image:images.infrastructureCareBanner,
+    image: images.designAndBuild,
     imageAlt: "Architect working on building plans",
     items: [
       "Architectural Design",
@@ -74,7 +74,7 @@ const specializedServices = [
   },
   {
     title: "Renovation & Refurbishment",
-    image:images.infrastructureCareBanner,
+    image: images.renovationAndRefurbishment,
     imageAlt: "Modern renovated interior with new furniture",
     items: [
       "Lobby Modernization",

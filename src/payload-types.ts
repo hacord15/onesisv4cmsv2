@@ -418,7 +418,7 @@ export interface TrainingProgram {
   createdAt: string;
 }
 /**
- * Career > Current Openings page.
+ * Career > Current Openings — listing cards and individual job detail pages.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "job-openings".
@@ -426,18 +426,50 @@ export interface TrainingProgram {
 export interface JobOpening {
   id: number;
   title: string;
-  department: string;
+  /**
+   * Auto-generated from Job Title if left blank. URL path: /career/current-openings/[slug]
+   */
+  slug?: string | null;
+  department: 'operations' | 'technical' | 'security' | 'corporate' | 'ehs' | 'sales-bd' | 'hr-admin';
   location: string;
   type: 'full-time' | 'part-time' | 'contract';
+  deploymentType?: ('on-site' | 'remote' | 'hybrid' | 'field') | null;
   /**
    * e.g. 5–8 yrs
    */
-  experience?: string | null;
-  description?: string | null;
+  experience: string;
   /**
    * Turn off to hide without deleting.
    */
   isActive?: boolean | null;
+  jobDescription?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  keyResponsibilities?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  candidateRequirements?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -958,12 +990,27 @@ export interface TrainingProgramsSelect<T extends boolean = true> {
  */
 export interface JobOpeningsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   department?: T;
   location?: T;
   type?: T;
+  deploymentType?: T;
   experience?: T;
-  description?: T;
   isActive?: T;
+  jobDescription?: T;
+  keyResponsibilities?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  candidateRequirements?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

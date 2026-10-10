@@ -329,10 +329,10 @@ export function ContactIndexPageClient({ nav, footer }: { nav: Nav; footer: Foot
                     <Mail className="h-4 w-4 text-[var(--color-brand)]" /> onesis@sisindia.com 
                   </a>
                   <a href="tel:+91 01146464444" className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]">
-                    <Phone className="h-4 w-4 text-[var(--color-brand)]" /> +91 01146464444
+                    <Phone className="h-4 w-4 text-[var(--color-brand)]" /> +91 011 46464444
                   </a>
                   <a href="tel:+91 01146465555" className="flex items-center gap-3 text-[14px] text-[var(--color-body)] hover:text-[var(--color-ink)]">
-                    <Phone className="h-4 w-4 text-[var(--color-brand)]" /> +91 01146465555
+                    <Phone className="h-4 w-4 text-[var(--color-brand)]" /> +91 011 46465555
                   </a>
                 </div>
               </div>

@@ -53,7 +53,7 @@ export function CTA() {
             {cta.body}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button href="#contact" variant="primary">
+            <Button href="/contact/contact-form" variant="primary">
               {cta.primaryCta}
             </Button>
             <button

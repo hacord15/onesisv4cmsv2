@@ -103,7 +103,7 @@ export const about = {
     "End-to-End Solutions",
   ],
   facts: [
-    { value: "2024", label: "Established, India" },
+    { value: "2022", label: "Established, India" },
     { value: "100%", label: "SIS Ltd Subsidiary" },
     { value: "₹15,982 Cr", label: "SIS Group Revenue" },
     { value: "3.5 Lakh", label: "SIS Group Employees" },
@@ -526,5 +526,5 @@ export const footer = {
     href: "https://www.instagram.com/onesis/",
   },
 ],
-copyright: "© 2024 OneSIS. A SIS Ltd Company. All rights reserved.",
+copyright: "© 2022 OneSIS. A SIS Ltd Company. All rights reserved.",
 };

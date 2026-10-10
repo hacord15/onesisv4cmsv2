@@ -6,11 +6,10 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { CareerSubNav } from "@/components/ui/CareerSubNav";
 import { OpeningsList } from "@/components/career/OpeningsList";
-import { getGlobal, getCollection, mediaUrl } from "@/lib/payload-fetch";
+import { getGlobal, getCollection } from "@/lib/payload-fetch";
 import { images } from "@/lib/images";
 
 export const dynamic = "force-dynamic";
-
 
 export const metadata = {
   title: "Current Openings | Careers at OneSIS",
@@ -19,10 +18,9 @@ export const metadata = {
 };
 
 export default async function OpeningsPage() {
-  const [nav, footer, pageIntro, jobs] = await Promise.all([
+  const [nav, footer, jobs] = await Promise.all([
     getGlobal("nav"),
     getGlobal("footer"),
-    getGlobal("career-current-openings-page"),
     getCollection("job-openings", { where: { isActive: { equals: true } } }),
   ]);
 
@@ -37,7 +35,7 @@ export default async function OpeningsPage() {
               Current <span className="accent">Opening</span>
             </>
           }
-          description="Join a team of 3.5 lakh+ professionals across India. Browse open roles below, filter by department, and apply directly."
+          description="Join a team of 3.5 lakh+ professionals across India. Browse open roles below, filter by department, and view details."
           backgroundImage={images.currentopeningsBanner}
         />
 
@@ -56,8 +54,7 @@ export default async function OpeningsPage() {
         <section className="bg-[var(--color-cream)] py-16">
           <Container className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <p className="max-w-md text-[15px] leading-relaxed text-[var(--color-body)]">
-              Don&apos;t see a role that fits? Send us your resume anyway —
-              we&apos;re always growing.
+              Don&apos;t see a role that fits? Send us your resume anyway, we&apos;re always growing.
             </p>
             <Link
               href="/contact"

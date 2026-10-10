@@ -12,7 +12,7 @@ const serviceAreas = [
   {
     title: "Common Area Management",
     lead: "Maintenance of",
-    image:images.softservices,
+    image: images.commonarea,
     imageAlt: "Modern apartment lobby with reception desk",
     items: [
       "Lobbies",
@@ -25,7 +25,7 @@ const serviceAreas = [
   },
   {
     title: "HVAC & MEP Operations",
-    image:images.softservices,
+    image: images.hvacAndmep,
     imageAlt: "HVAC technician inspecting rooftop units",
     items: [
       "Preventive Maintenance",
@@ -37,7 +37,7 @@ const serviceAreas = [
   },
   {
     title: "Security & Access Control",
-    image:images.softservices,
+    image: images.securityAndAccess,
     imageAlt: "Surveillance camera mounted on a building",
     items: [
       "Visitor Management",
@@ -48,7 +48,7 @@ const serviceAreas = [
   },
   {
     title: "Statutory Compliance",
-    image:images.softservices,
+    image: images.statutoryCompliance,
     imageAlt: "Stack of compliance documents and a pen",
     items: [
       "Government Liaison",
@@ -59,7 +59,7 @@ const serviceAreas = [
   },
   {
     title: "Housekeeping & Sanitation",
-    image:images.softservices,
+    image: images.housekeepingAndSanitation,
     imageAlt: "Clean and polished hotel corridor",
     items: [
       "High-frequency Cleaning",
@@ -70,8 +70,8 @@ const serviceAreas = [
     ],
   },
   {
-    title: " Occupier Tenant & Resident Services",
-    image:images.softservices,
+    title: "Occupier, Tenant & Resident Services",
+    image: images.occupierTenantAndResidentServices,
     imageAlt: "Receptionist assisting a visitor",
     items: [
       "Business Centre Management",
@@ -83,7 +83,7 @@ const serviceAreas = [
   },
   {
     title: "Emergency & Safety",
-    image:images.softservices,
+    image: images.emergencyAndSafety,
     imageAlt: "Fire extinguisher and safety sign",
     items: [
       "Disaster Preparedness",
@@ -94,7 +94,7 @@ const serviceAreas = [
   },
   {
     title: "Reporting & Reviews",
-    image:images.softservices,
+    image: images.reportingAndReviews,
     imageAlt: "Business dashboard on a laptop screen",
     items: [
       "Monthly Dashboards",

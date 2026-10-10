@@ -101,8 +101,34 @@ mTrainerPlatform: "/images/training/m-trainer-platform.jpg",
   civilUpgrades: "/assests/solutions/interior-solutions/civil-upgrades.png",
   handover: "/assests/solutions/interior-solutions/handover.png",
 
- 
+ // solutions property management 
+ commonarea: "/assests/solutions/property-management/01-common-area-management.png",
+  hvacAndmep: "/assests/solutions/property-management/02-hvac-and-mep-operations.png",
+  securityAndAccess: "/assests/solutions/property-management/03-security-and-access-control.png",
+  statutoryCompliance: "/assests/solutions/property-management/04-statutory-compliance.png",
+  housekeepingAndSanitation: "/assests/solutions/property-management/05-housekeeping-and-sanitation.png",
+  occupierTenantAndResidentServices: "/assests/solutions/property-management/06-occupier-tenant-and-resident-services.png",
+  emergencyAndSafety: "/assests/solutions/property-management/07-emergency-and-safety.png",
+  reportingAndReviews: "/assests/solutions/property-management/08-reporting-and-reviews.png",
 
+//infrastructure care
+  capexAndCivilUpgradation:
+    "/assests/solutions/infrastructure-care/01-capex-and-civil-upgradation.png",
+
+  retrofittingServices:
+    "/assests/solutions/infrastructure-care/02-retrofitting-services.png",
+
+  smartMaintenance:
+    "/assests/solutions/infrastructure-care/03-smart-maintenance.png",
+
+  projectManagementConsultancy:
+    "/assests/solutions/infrastructure-care/04-project-management-consultancy-pmc.png",
+
+  designAndBuild:
+    "/assests/solutions/infrastructure-care/05-design-and-build.png",
+
+  renovationAndRefurbishment:
+    "/assests/solutions/infrastructure-care/06-renovation-and-refurbishment.png",
 
   //solutions Facility Management page
   securityservices :"/assests/solutions/fm/SecurityServices.png",

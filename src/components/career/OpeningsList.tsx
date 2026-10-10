@@ -36,27 +36,37 @@ export function OpeningsList({ jobs }: { jobs: JobOpening[] }) {
         {filtered.map((job) => (
           <div
             key={job.id}
-            className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between"
+            className="group flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between"
           >
-            <div>
-              <h3 className="text-[16px] font-semibold text-[var(--color-ink)]">
+            <Link
+              href={`/career/current-openings/${job.slug}`}
+              className="block flex-1"
+            >
+              <h3 className="text-[16px] font-semibold text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-brand)]">
                 {job.title}
               </h3>
               <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] text-[var(--color-muted)]">
-                <span>{job.department}</span>
+                <span className="capitalize">{job.department?.replace("-", " ")}</span>
                 <span className="h-1 w-1 rounded-full bg-[var(--color-muted-2)]" />
                 <span>{job.location}</span>
                 <span className="h-1 w-1 rounded-full bg-[var(--color-muted-2)]" />
-                <span className="capitalize">{job.type?.replace('-', ' ')}</span>
+                <span className="capitalize">{job.type?.replace("-", " ")}</span>
+                {job.deploymentType && (
+                  <>
+                    <span className="h-1 w-1 rounded-full bg-[var(--color-muted-2)]" />
+                    <span className="capitalize">{job.deploymentType.replace("-", " ")}</span>
+                  </>
+                )}
                 <span className="h-1 w-1 rounded-full bg-[var(--color-muted-2)]" />
                 <span>{job.experience}</span>
               </div>
-            </div>
+            </Link>
+
             <Link
-              href="/contact"
+              href={`/career/current-openings/${job.slug}`}
               className="inline-flex shrink-0 items-center gap-2 border border-[var(--color-ink)]/25 px-5 py-2.5 text-[12.5px] font-semibold uppercase tracking-[0.06em] text-[var(--color-ink)] transition-colors hover:border-[var(--color-ink)]"
             >
-              Apply Now
+              View Details
             </Link>
           </div>
         ))}
