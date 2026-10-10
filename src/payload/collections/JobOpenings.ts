@@ -87,25 +87,29 @@ export const JobOpenings: CollectionConfig = {
             },
           ],
         },
-        {
-          label: 'Job Detail',
-          description: 'Shown on the individual job detail page.',
-          fields: [
-            { name: 'jobDescription', type: 'richText', label: 'Job Description (JD)' },
-            {
-              name: 'keyResponsibilities',
-              type: 'array',
-              label: 'Roles & Responsibilities',
-              fields: [{ name: 'text', type: 'text', required: true }],
-            },
-            {
-              name: 'candidateRequirements',
-              type: 'array',
-              label: 'Candidate Requirements',
-              fields: [{ name: 'text', type: 'text', required: true }],
-            },
-          ],
-        },
+       
+{
+  label: 'Job Detail',
+  description: 'Shown on the individual job detail page.',
+  fields: [
+    {
+      name: 'jobDescription',
+      type: 'richText',
+      label: 'Job Description (JD)',
+    },
+    {
+      name: 'keyResponsibilities',
+      type: 'richText',
+      label: 'Roles & Responsibilities',
+    },
+    {
+      name: 'candidateRequirements',
+      type: 'richText',
+      label: 'Candidate Requirements',
+    },
+  ],
+},
+
       ],
     },
     { name: 'description', type: 'textarea', admin: { hidden: true } },

@@ -82,43 +82,29 @@ export default async function JobDetailPage({ params }: Params) {
               </div>
             )}
 
-            {job.keyResponsibilities && job.keyResponsibilities.length > 0 && (
-              <div className="mt-10">
-                <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-brand)]">
-                  Roles &amp; Responsibilities
-                </h2>
-                <ul className="mt-4 flex flex-col gap-2.5">
-                  {job.keyResponsibilities.map((r, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2.5 text-[14px] leading-relaxed text-[var(--color-body)]"
-                    >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-brand)]" />
-                      <span>{r.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+         -
+{job.keyResponsibilities && (
+  <div className="mt-10">
+    <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-brand)]">
+      Roles &amp; Responsibilities
+    </h2>
+    <div className="prose prose-neutral mt-3 max-w-none text-[14.5px] leading-relaxed text-[var(--color-body)]">
+      <RichText data={job.keyResponsibilities} />
+    </div>
+  </div>
+)}
 
-            {job.candidateRequirements && job.candidateRequirements.length > 0 && (
-              <div className="mt-10">
-                <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-brand)]">
-                  Candidate Requirements
-                </h2>
-                <ul className="mt-4 flex flex-col gap-2.5">
-                  {job.candidateRequirements.map((r, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2.5 text-[14px] leading-relaxed text-[var(--color-body)]"
-                    >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-brand)]" />
-                      <span>{r.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+
+           {job.candidateRequirements && (
+  <div className="mt-10">
+    <h2 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--color-brand)]">
+      Candidate Requirements
+    </h2>
+    <div className="prose prose-neutral mt-3 max-w-none text-[14.5px] leading-relaxed text-[var(--color-body)]">
+      <RichText data={job.candidateRequirements} />
+    </div>
+  </div>
+)}
 
             <div className="mt-12 flex items-start gap-3 border-t border-[var(--color-border)] pt-8">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-brand)]" />

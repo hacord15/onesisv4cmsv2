@@ -457,18 +457,36 @@ export interface JobOpening {
     };
     [k: string]: unknown;
   } | null;
-  keyResponsibilities?:
-    | {
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  candidateRequirements?:
-    | {
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
+  keyResponsibilities?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  candidateRequirements?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   description?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -998,18 +1016,8 @@ export interface JobOpeningsSelect<T extends boolean = true> {
   experience?: T;
   isActive?: T;
   jobDescription?: T;
-  keyResponsibilities?:
-    | T
-    | {
-        text?: T;
-        id?: T;
-      };
-  candidateRequirements?:
-    | T
-    | {
-        text?: T;
-        id?: T;
-      };
+  keyResponsibilities?: T;
+  candidateRequirements?: T;
   description?: T;
   updatedAt?: T;
   createdAt?: T;
