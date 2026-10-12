@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { images } from "@/lib/images";
 import type { Footer as FooterGlobal } from "@/payload-types";
+
 export const dynamic = "force-dynamic";
 
 
@@ -53,7 +54,9 @@ export function Footer({ footer }: { footer: FooterGlobal }) {
 
       <div className="border-t border-[var(--color-border)]">
         <Container className="flex flex-col items-center gap-4 py-6 text-[12.5px] text-[var(--color-muted)] sm:flex-row sm:justify-between">
-          <span>{footer.copyright}</span>
+         <span>
+© {new Date().getFullYear()} OneSIS. A SIS Ltd Company. All rights reserved.
+</span>
           <div className="flex items-center gap-6">
            {(footer.social ?? []).map((social) => (
   <a
