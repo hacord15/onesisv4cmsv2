@@ -212,7 +212,7 @@ export default async function CaseStudyDetailPage({ params }: Params) {
                     Talk to our team about how OneSIS can deliver it end to end.
                   </p>
                   <Link
-                    href="/contact"
+                    href="/contact/contact-form"
                     className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-[12.5px] font-semibold text-[var(--color-ink)] transition hover:bg-white/90"
                   >
                     Talk to Us

@@ -269,6 +269,8 @@ export function partnershipEnquiryEmail(doc: {
   });
 }
 
+
+
 export function contactEnquiryThankYouEmail(doc: {
   fullName: string;
   organisation: string;
@@ -359,7 +361,7 @@ export function contactEnquiryThankYouEmail(doc: {
             ">
               We have successfully received your enquiry. Our team will
               review your requirements and a representative will get in
-              touch with you within <strong>2 business days</strong>.
+              touch with you within <strong>5 business days</strong>.
             </p>
 
             <table
@@ -435,4 +437,29 @@ export function contactEnquiryThankYouEmail(doc: {
       </table>
     </div>
   `;
+}
+
+export function thankYouEmail({
+  name,
+  kind,
+  reference,
+}: {
+  name: string;
+  kind: "partnership" | "contact";
+  reference?: string | null;
+}) {
+  const isPartner = kind === "partnership";
+
+  return emailShell({
+    badge: isPartner ? "Partnership Application" : "General Enquiry",
+    heading: `Thank you, ${name}!`,
+    intro: isPartner
+      ? "We have received your partnership application. Our partnerships team reviews every application within 5 working days and will get in touch with you."
+      : "We have received your enquiry. A regional OneSIS team will get in touch with you within 2 business days.",
+    rows: [
+      { icon: ICONS.message, label: "Reference", value: reference },
+    ],
+    footerNote:
+      "If you need anything urgent, write to Onesis@sisindia.com or call +91 011 4646 4444.",
+  });
 }

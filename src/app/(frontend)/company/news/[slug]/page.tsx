@@ -394,7 +394,7 @@ const relatedNews = (item.relatedNews ?? []).filter(
                     Let&apos;s discuss how OneSIS can help you build scalable digital solutions for your organization.
                   </p>
                   <Link
-                    href="/contact"
+                    href="/contact/contact-form"
                     className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-[12.5px] font-semibold text-[var(--color-ink)] transition hover:bg-white/90"
                   >
                     Talk to Us <ArrowRightIcon className="h-3.5 w-3.5" />

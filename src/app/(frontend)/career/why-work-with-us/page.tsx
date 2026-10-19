@@ -95,7 +95,7 @@ export default async function CareerPage() {
               Ready to grow your career with 3.5 lakh+ colleagues across India?
             </p>
             <Link
-              href="/contact"
+              href="/contact/contact-form"
               className="inline-flex items-center gap-2 bg-[var(--color-brand)] px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[var(--color-brand-dark)]"
             >
               Get in Touch

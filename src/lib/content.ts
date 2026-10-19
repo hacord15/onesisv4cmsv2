@@ -506,7 +506,7 @@ export const footer = {
   {
     title: "Connect",
     links: [
-      { label: "Contact Us", href: "/contact" },
+      { label: "Contact Us", href: "/contact/contact-form" },
       { label: "Careers", href: "/career/current-openings" },
       { label: "Privacy Policy", href: "/privacy-policy" },
     ],

@@ -461,14 +461,14 @@ export function PartnershipPageClient({ nav, footer }: { nav: Nav; footer: Foote
                   </li>
                 </ul>
 
-                <a
+                {/* <a
                   href="#"
                   className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[var(--color-brand)] hover:text-[var(--color-brand-dark)]"
                 >
                   <FileDown className="h-4 w-4" />
 
                   Download partner brochure
-                </a>
+                </a> */}
               </div>
             </div>
 

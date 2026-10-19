@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { anyone, authenticated } from '../access'
-import { partnershipEnquiryEmail } from '@/lib/email-templates'
+import { partnershipEnquiryEmail,thankYouEmail   } from '@/lib/email-templates'
+
 
 export const PartnershipEnquiries: CollectionConfig = {
   slug: 'partnership-enquiries',
@@ -40,10 +41,12 @@ export const PartnershipEnquiries: CollectionConfig = {
       admin: { position: 'sidebar' },
     },
   ],
- hooks: {
+hooks: {
   afterChange: [
     async ({ doc, operation, req }) => {
       if (operation !== 'create') return
+
+      // 1. Admin ko notification
       try {
         await req.payload.sendEmail({
           to: process.env.ENQUIRY_NOTIFY_EMAIL,
@@ -51,7 +54,22 @@ export const PartnershipEnquiries: CollectionConfig = {
           html: partnershipEnquiryEmail(doc),
         })
       } catch (err) {
-        req.payload.logger.error(`Failed to send partnership enquiry email: ${err}`)
+        req.payload.logger.error(`Failed to send partnership admin email: ${err}`)
+      }
+
+      // 2. User ko thank you mail
+      try {
+        await req.payload.sendEmail({
+          to: doc.email,
+          subject: 'Thank you for your partnership enquiry — OneSIS',
+          html: thankYouEmail({
+            name: doc.contactPerson,
+            kind: 'partnership',
+            reference: `PE-${doc.id}`,
+          }),
+        })
+      } catch (err) {
+        req.payload.logger.error(`Failed to send partnership thank-you email: ${err}`)
       }
     },
   ],

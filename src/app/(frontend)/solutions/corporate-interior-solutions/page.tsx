@@ -206,7 +206,7 @@ export default async function CorporateInteriorSolutionsPage() {
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link
-                href="/contact"
+                href="/contact/contact-form"
                 className="inline-flex items-center gap-2 bg-[var(--color-brand)] px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[var(--color-brand-dark)]"
               >
                 Talk to Our Team

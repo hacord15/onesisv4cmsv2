@@ -165,7 +165,7 @@ export default async function SpecializedServicesPage() {
               Talk to our team about your infrastructure care needs.
             </p>
             <Link
-              href="/contact"
+              href="/contact/contact-form"
               className="inline-flex items-center gap-2 bg-[var(--color-brand)] px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[var(--color-brand-dark)]"
             >
               Talk to Our Team

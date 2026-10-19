@@ -38,7 +38,7 @@ const advantages = [
     image:images.technologyfirstoperations,
     imageAlt: "Data dashboard on a laptop screen",
     description:
-      "Proprietary platforms (One Point App, iOPS, OneSis FACTECH) deliver real-time dashboards, e-checklists, and predictive maintenance.",
+      "Proprietary platforms (One Point App, iOPS, OneSIS FACTECH) deliver real-time dashboards, e-checklists, and predictive maintenance.",
   },
   {
     index: "05",
